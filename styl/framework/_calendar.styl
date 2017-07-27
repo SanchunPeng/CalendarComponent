@@ -1,0 +1,67 @@
+.data-picker
+  .d-p-calendar-item
+    header
+      border-bottom 1px solid border-color
+      margin-bottom 1rem
+
+      h4
+        color aqua
+        text-align center
+        margin 0
+        line-height 3.25rem
+        font-weight normal
+
+    ul
+      display flex
+      flex-wrap wrap
+      margin 0
+      padding 0
+      border-bottom 1px solid border-color
+
+      li
+        list-style none
+        min-width day-minWidth
+        max-width day-maxWidth
+        flex 1 1 day-minWidth
+        text-align center
+        line-height 3rem
+        margin-bottom 1rem
+
+        for n in (0..6)
+          sunday = 8 - n
+          saturday = 9 - n
+
+          &.d-p-empty-{n}
+            counter-reset date
+            flex n n day-minWidth * n
+            min-width day-minWidth * n
+            max-width 100%
+
+            ~ :nth-child(7n + {sunday}),
+            ~ :nth-child(7n + {saturday})
+              color orange
+
+
+
+        &:not(:first-of-type):before
+          content counter(date)
+          counter-increment date
+
+        &.d-p-today
+          position relative
+          &:after
+            content ' '
+            position absolute
+            width point-w
+            height point-w
+            line-height point-w
+            font-size point-w
+            border-radius 50%
+            background-color red
+            left 50%
+            margin-left -(point-w / 2)
+            bottom 0
+        &.d-p-select
+          background radial-gradient(circle at center,aqua 0,aqua 63%,transparent 63%,transparent 100%)
+
+

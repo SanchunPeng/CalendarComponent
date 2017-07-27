@@ -1,0 +1,23 @@
+@import "../node_modules/colors.css/stylus/variables.styl"
+@import "framework/_variable.styl"
+
+.data-picker
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  background-color white
+  display flex
+  flex-direction column
+
+  &.static
+    position relative
+
+    .d-p-container
+      flex 1
+
+@import "framework/_header.styl"
+@import "framework/_labels.styl"
+@import "framework/_calendar.styl"
+
